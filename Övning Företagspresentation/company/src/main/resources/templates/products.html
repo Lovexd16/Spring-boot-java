@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Produkter</h1>
+    <div>
+        <form method="post" th:action="@{/new-product}" th:object="${newProduct}">
+            <input type="text" th:field="*{productName}" placeholder="Skriv produktens namn">
+            <button type="submit">Lägg till</button>
+        </form>
+    </div>
+    <ul>
+        <li th:id="${item.productId}" th:each="item : ${productItems}">
+            <span th:text="${item.productName}"></span> 
+            <a th:href="@{/remove-productItem/{productItemId}(productItemId=${item.productId})}">[X]</a>
+        </li>
+    </ul>
+    <a href="http://localhost:8080/introduction">Gå till startsidan!</a>
+    <a href="http://localhost:8080/employees">Se våra anställda!</a>
+</body>
+</html>

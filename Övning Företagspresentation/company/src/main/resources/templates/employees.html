@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+</head>
+<body>
+    <h1>Här är våra anställda!</h1>
+    <p>Här kan du anställa vem du vill! Tryck på X om du vill sparka någon.</p>
+    <div>
+        <form method="post" th:action="@{new-employee}" th:object="${newEmployee}">
+            <input type="text" th:field="*{employeeName}" placeholder="Skriv personens namn">
+            <button type="submit">Anställ</button>
+        </form>
+    </div>
+    <ul>
+        <li th:id="${item.employeeId}" th:each="item : ${employeeItems}">
+            <span th:text="${item.employeeName}"></span>
+            <a th:href="@{/remove-employeeItem/{employeeItemId}(employeeItemId=${item.employeeId})}">[X]</a>
+        </li>
+    </ul>
+    <p>Kontaktuppgifter: Tel: 076-032 23 30, Stad: Nässjö</p>
+    <a href="http://localhost:8080/introduction">Gå till startsidan!</a>
+    <a href="http://localhost:8080/products">Se våra produkter!</a>
+</body>
+</html>
