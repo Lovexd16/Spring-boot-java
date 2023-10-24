@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+    <h1>Startsida</h1>
+    <p>Här ser du alla våra böcker. Du kan lägga till och ta bort.</p>
+    <div>
+        <form method="post" th:action="@{new-book}" th:object="${newBook}">
+            <input type="text" th:field="*{bookTitle}" placeholder="Skriv bokens titel">
+            <button type="submit">Lägg till bok</button>
+        </form>
+    </div>
+    <ul>
+        <li th:id="${item.bookId}" th:each="item : ${employeeItems}">
+            <span th:text="${item.bookTitle}"></span>
+            <a th:href="@{/remove-bookItem/{bookItemId}(bookItemId=${item.bookId})}">[X]</a>
+        </li>
+    </ul>
+</body>
+</html>

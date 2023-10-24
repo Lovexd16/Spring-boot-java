@@ -33,7 +33,7 @@ public class EmployeesController {
         return "redirect:/employees";
     }
 
-        @GetMapping("/remove-employeeItem/{employeeItemId}")
+    @GetMapping("/remove-employeeItem/{employeeItemId}")
     String removeProductItem(@PathVariable int employeeItemId) {
         System.out.println("Du tog bort anställd med id: " + employeeItemId);
         employeeItems.removeIf(employeeItem -> employeeItem.getEmployeeId() == employeeItemId);
