@@ -25,8 +25,8 @@ public class BooksController {
     }
 
     @PostMapping("/new-book")
-    String newBook(@RequestParam("bookTitle") String bookTitle) {
-        bookItems.add(new Books(bookTitle, bookTitle, 0, 0));
+    String newBook(@RequestParam("bookTitle") String bookTitle, @RequestParam("bookAuthor") String bookAuthor, @RequestParam("bookPages") int bookPages) {
+        bookItems.add(new Books(bookTitle, bookAuthor, bookPages, bookItems.size() + 1));
         return "redirect:/books";
     }
 
