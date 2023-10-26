@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Bok info</h1>
+    Title: <span th:text="${book.title}"></span><br/>
+    Author: <span th:text="${book.author}"></span><br/>
+    Pages: <span th:text="${book.pages}"></span><br/>
+
+    <a th:href="@{/book/rent/{bookTitle}(bookTitle=${book.title})}">
+        <button>
+            <span th:text="${book.rented ? 'Lämna tillbaka' : 'Låna'}"></span>
+        </button>
+    </a>
+
+    <div><a href="/">Alla böcker</a></div>
+</body>
+</html>
